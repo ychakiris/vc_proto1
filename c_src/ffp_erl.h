@@ -1,3 +1,6 @@
+#ifndef  _INCLUDE_FFP_ERL_H
+#define  _INCLUDE_FFP_ERL_H
+
 
 #include "config.h"
 #include <inttypes.h>
@@ -18,6 +21,8 @@
 #include "libavutil/time.h"
 #include "libavformat/avformat.h"
 #include "libavdevice/avdevice.h"
+
+
 #include "libswscale/swscale.h"
 #include "libavutil/opt.h"
 #include "libavcodec/avfft.h"
@@ -36,7 +41,7 @@
 
 #include <assert.h>
 
-const char program_name[] = "ffplay";
+const char program_name[] = "ffp_erl";
 const int program_birth_year = 2003;
 
 #define MAX_QUEUE_SIZE (15 * 1024 * 1024)
@@ -338,3 +343,12 @@ static AVPacket flush_pkt;
 static SDL_Window *window;
 static SDL_Renderer *renderer;
 
+static int erl_c_node_port_num;
+static char *erl_c_node_cookie;
+static struct {
+  int port;
+  char *cookie;
+} ErlNodeConfig;
+
+extern 
+#endif /* _INCLUDE_FFP_ERL_H */

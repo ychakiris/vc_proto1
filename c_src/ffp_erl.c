@@ -3214,6 +3214,11 @@ static const OptionDef options[] = {
     { "scodec", HAS_ARG | OPT_STRING | OPT_EXPERT, { &subtitle_codec_name }, "force subtitle decoder", "decoder_name" },
     { "vcodec", HAS_ARG | OPT_STRING | OPT_EXPERT, {    &video_codec_name }, "force video decoder",    "decoder_name" },
     { "autorotate", OPT_BOOL, { &autorotate }, "automatically rotate video", "" },
+
+    //erlang node options
+    { "erlport", HAS_ARG | OPT_INT, { &erl_c_node_port_num}, "port number for erlang node","erl_c_node_port_num"},
+    { "erlcookie", HAS_ARG | OPT_STRING, { &erl_c_node_cookie}, "cookie for erlang node", "erl_c_node_cookie" },
+
     { NULL, },
 };
 
@@ -3310,6 +3315,17 @@ int main(int argc, char **argv)
 
     parse_options(NULL, argc, argv, options, opt_input_file);
 
+    if (!(erl_c_node_port_num == 0)) {
+      printf(  "\nerlang port number = %d\n", erl_c_node_port_num);
+    } else {
+      printf( "\n");
+    }
+    if (!(erl_c_node_cookie == NULL)) {
+      printf(  "erlang cookie      = %s\n\n", erl_c_node_cookie);
+    } else {
+      printf("\n");
+    }
+
     if (!input_filename) {
         show_usage();
         av_log(NULL, AV_LOG_FATAL, "An input file must be specified\n");
@@ -3354,6 +3370,8 @@ int main(int argc, char **argv)
         av_log(NULL, AV_LOG_FATAL, "Failed to initialize VideoState!\n");
         do_exit(NULL);
     }
+
+
 
     event_loop(is);
 
