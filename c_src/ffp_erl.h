@@ -350,5 +350,4 @@ static struct {
   char *cookie;
 } ErlNodeConfig;
 
-extern 
 #endif /* _INCLUDE_FFP_ERL_H */
