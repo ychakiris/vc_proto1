@@ -1,9 +1,8 @@
 #include "erl_c_node.h"
 
+int start_up_node(ErlNodeConfig *erl_node_config) {
 
-
-int fake_main(int argc, char **argv) {
-    int port;                                /* Listen port number */
+  int port;                                /* Listen port number */
     int fd;                                  /* Socket descriptor */
     int listen;                              /* Listen socket */
     ErlConnect conn;                         /* Connection data */
@@ -14,12 +13,9 @@ int fake_main(int argc, char **argv) {
     thread_data_t *data;
     static int tidx = 0;
 
-    if (argc == 3)
-    {
-        port = atoi(argv[1]);
-        cookie = argv[2];
-    } else return -1;
-
+    port = erl_node_config->port;
+    cookie = erl_node_config->cookie;
+ 
     erl_init(NULL, 0);
 
     if (erl_connect_init(1, cookie, 0) == -1)
@@ -44,7 +40,7 @@ int fake_main(int argc, char **argv) {
     for(;;) {
 
         while((fd = erl_accept(listen, &conn)) == ERL_ERROR)
-            fprintf(stderr, "%s Connection error\n\r", argv[0]);
+            fprintf(stderr, "%s Connection error\n\r", port);
 
         if((data = (thread_data_t *)malloc(sizeof(thread_data_t))) == NULL) {
             fprintf(stderr, "Memory allocation error!\n\r");

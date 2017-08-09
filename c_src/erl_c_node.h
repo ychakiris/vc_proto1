@@ -41,6 +41,13 @@ static int my_listen(int);
 static short int get_fn_idx(char *);
 static void *message_read_loop(void *);
 
-extern struct ErlNodeConfig;
+static int erl_c_node_port_num;
+static char *erl_c_node_cookie;
+typedef struct {
+  int port;
+  char *cookie;
+} ErlNodeConfig;
+
+
 
 #endif /* _INCLUDE_ERL_C_NODE_H */

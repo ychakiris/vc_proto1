@@ -1,1 +1,8 @@
-[].
+[{<<"erlsom">>,
+  {git,"http://github.com/willemdj/erlsom.git",
+       {ref,"ba84a5767fe6852af2b691fc0e234702d336d65f"}},
+  0},
+ {<<"yaws">>,
+  {git,"https://github.com/klacke/yaws.git",
+       {ref,"59bbfd912c0bffa9d9c1f2a149ddfc420895f596"}},
+  0}].

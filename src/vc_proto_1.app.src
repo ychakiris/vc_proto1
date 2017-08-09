@@ -2,10 +2,14 @@
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, { vc_proto_1_app, []}},
+  {mod, { vc_proto_1_app, nmap_server, []}},
+  {artifacts, ["priv/vc_proto_1.so"]},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    yaws,
+    vc_proto_1_app,
+    nmap_server
    ]},
   {env,[]},
   {modules, []},
