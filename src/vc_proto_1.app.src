@@ -7,8 +7,10 @@
   {applications,
    [kernel,
     stdlib,
-    yaws,
-    vc_proto_1_app
+    vc_proto_1_app,
+    erlexe,
+    erlson,
+    yaws
    ]},
   {env,[]},
   {modules, []},
